@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+div{
+    font-size: 1.2em;
+}
+
+p{
+    font-size: 1.5em;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('background/Sunny-Skies.jpg');
+    background-size: cover;
+}
+
+.container{
+    background-color: transparent;
+    border: .2em solid #191919;
+    border-radius: 2em;
+    box-shadow: .5em .5em .5em #191919;
+}
+
+.box_lugar{
+    padding: 1em;
+    text-align: left;
+}
+
+.box_clima{
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    align-items: center;
+    justify-items: stretch;
+}
+
+#temperatura,
+#clima,
+#humedad,
+#presion,
+#viento,
+#fecha{
+    grid-column: 2;
+}
+
+#imagen{
+    grid-row: 1 / 7;
+}

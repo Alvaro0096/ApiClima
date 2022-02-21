@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+    <title>Api de Clima</title>
+</head>
+<body onload="carga()">
+    <main class="container">
+        <div class="box_lugar">
+            <p>Lugar: <span id="region"></span></p>
+            <p>Pais: <span id="pais"></span></p>
+        </div>
+        <div class="box_clima">
+            <img id="imagen" src="animated/day.svg">
+            <div id="temperatura"></div>
+            <div id="clima"></div>
+            <div id="humedad"></div>
+            <div id="presion"></div>
+            <div id="viento"></div>
+            <div id="fecha"></div>
+        </div>
+    </main>
+</body>
+</html>
