@@ -13,8 +13,7 @@ const ubicacion = posicion => {
 //OBJETO CON LOS DATOS A UTILIZAR
 const datosDeClima = datos => {
     const climaInfo = {
-        region: datos.name,
-        pais: datos.sys.country,
+        region: `Barrio: ${datos.name}`,
         temperatura: `Temperatura: ${datos.main.temp} °C`,
         clima: `Clima: ${datos.weather[0].description}`.toUpperCase(),
         humedad: `Humedad: ${datos.main.humidity}%`,
