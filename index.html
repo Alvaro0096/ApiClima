@@ -9,13 +9,14 @@
     <title>Api de Clima</title>
 </head>
 <body onload="carga()">
-    <main class="container">
+    <div class="loader" id="loader"></div>
+    <main id="container" class="container fuente">
         <div class="box_lugar">
             <p>Lugar: <span id="region"></span></p>
-            <p>Pais: <span id="pais"></span></p>
+            <p>País: <span id="pais"></span></p>
         </div>
         <div class="box_clima">
-            <img id="imagen" src="animated/day.svg">
+            <img id="iconoAnimado" src="" alt="">
             <div id="temperatura"></div>
             <div id="clima"></div>
             <div id="humedad"></div>
