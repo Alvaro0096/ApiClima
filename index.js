@@ -13,7 +13,7 @@ const ubicacion = posicion => {
 //OBJETO CON LOS DATOS A UTILIZAR
 const datosDeClima = datos => {
     const climaInfo = {
-        region: `Barrio: ${datos.name}`,
+        region: datos.name,
         temperatura: `Temperatura: ${datos.main.temp} °C`,
         clima: `Clima: ${datos.weather[0].description.toUpperCase()}`,
         humedad: `Humedad: ${datos.main.humidity}%`,
@@ -81,9 +81,9 @@ const datosDeClima = datos => {
             }
             iconos();
         }
-
+        
         //SI ES DE NOCHE...
-        else if(horaApi >= anochecerApi && horaApi <= amanecerApi){
+        else {
             //MODIFICACION DE ICONOS Y BACKGROUND
             const iconos = () => {
                 let iconoClima = document.getElementById('iconoAnimado');
@@ -112,7 +112,7 @@ const datosDeClima = datos => {
                     case 'Clear':
                         iconoClima.src='animated/night.svg';
                         document.body.style.backgroundImage = 'url(background/night/Night-Skies.jpg)';
-                        letras.style.color = '#fff';
+                        letras.style.color = '#000';
                         break;
                     case 'Clouds':
                         iconoClima.src='animated/cloudy-night-3.svg';
@@ -123,10 +123,6 @@ const datosDeClima = datos => {
             }
             iconos();
         } 
-        //SI HAY UN ERROR
-        else {
-            console.log('Fallo al calcular hora');
-        }
     }
     //LLAMADA DE FUNCIONES
     horaDelDia();
