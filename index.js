@@ -15,7 +15,7 @@ const datosDeClima = datos => {
     const climaInfo = {
         region: `Barrio: ${datos.name}`,
         temperatura: `Temperatura: ${datos.main.temp} °C`,
-        clima: `Clima: ${datos.weather[0].description}`.toUpperCase(),
+        clima: `Clima: ${datos.weather[0].description.toUpperCase()}`,
         humedad: `Humedad: ${datos.main.humidity}%`,
         presion: `Presion: ${datos.main.pressure} hPa`,
         viento: `Viento: ${datos.wind.speed} m/s`,
@@ -26,45 +26,110 @@ const datosDeClima = datos => {
         modificarTexto(key, climaInfo[key]);
     });
 
-    //MODIFICACION DE ICONOS
-    const iconos = () => {
-        let iconoClima = document.getElementById('iconoAnimado');
-        let letras = document.querySelector('.fuente');
-        switch (datos.weather[0].main) {
-            case 'Thunderstorm':
-                iconoClima.src='animated/thunder.svg';
-                document.body.style.backgroundImage = 'url(background/Storm-Skies.jpg)';
-                letras.style.color = '#fff';
-                break;
-            case 'Drizzle':
-                iconoClima.src='animated/rain-4.svg';
-                document.body.style.backgroundImage = 'url(background/Drizzle-Skies.jpg)';
-                letras.style.color = '#000';
-                break;
-            case 'Rain':
-                iconoClima.src='animated/rain-7.svg';
-                document.body.style.backgroundImage = 'url(background/Rain-Skies.jpg)';
-                letras.style.color = '#fff';
-                break;
-            case 'Snow':
-                iconoClima.src='animated/snowy-6.svg';
-                document.body.style.backgroundImage = 'url(background/Snow-Skies.jpg)';
-                letras.style.color = '#000';
-                break;
-            case 'Clear':
-                iconoClima.src='animated/day.svg';
-                document.body.style.backgroundImage = 'url(background/Sunny-Skies.jpg)';
-                letras.style.color = '#000';
-                break;
-            case 'Clouds':
-                iconoClima.src='animated/cloudy.svg';
-                document.body.style.backgroundImage = 'url(background/Cloud-Skies.jpg)';
-                letras.style.color = '#000';
-                break;
+    //OBTENER HORA ACTUAL, AMANECER Y ANOCHECER
+    const horaDelDia = () => {
+        //HORA ACTUAL
+        let horaTimeStamp = datos.dt;
+        let horaApi = new Date(horaTimeStamp * 1000);
+
+        //HORA AMANECER
+        let amanecerTimeStamp = datos.sys.sunrise;
+        let amanecerApi = new Date(amanecerTimeStamp * 1000);
+
+        //HORA ANOCHECER
+        let anochecerTimeStamp = datos.sys.sunset;
+        let anochecerApi = new Date(anochecerTimeStamp * 1000);
+
+        //SI ES DE DIA...
+        if (horaApi >= amanecerApi && horaApi <= anochecerApi) {
+            //MODIFICACION DE ICONOS Y BACKGROUND
+            const iconos = () => {
+                let iconoClima = document.getElementById('iconoAnimado');
+                let letras = document.querySelector('.fuente');
+                switch (datos.weather[0].main) {
+                    case 'Thunderstorm':
+                        iconoClima.src='animated/thunder.svg';
+                        document.body.style.backgroundImage = 'url(background/day/Storm-Skies.jpg)';
+                        letras.style.color = '#000';
+                        break;
+                    case 'Drizzle':
+                        iconoClima.src='animated/rainy-4.svg';
+                        document.body.style.backgroundImage = 'url(background/day/Drizzle-Skies.jpg)';
+                        letras.style.color = '#000';
+                        break;
+                    case 'Rain':
+                        iconoClima.src='animated/rainy-7.svg';
+                        document.body.style.backgroundImage = 'url(background/day/Rain-Skies.jpg)';
+                        letras.style.color = '#fff';
+                        break;
+                    case 'Snow':
+                        iconoClima.src='animated/snowy-6.svg';
+                        document.body.style.backgroundImage = 'url(background/day/Snow-Skies.jpg)';
+                        letras.style.color = '#000';
+                        break;
+                    case 'Clear':
+                        iconoClima.src='animated/day.svg';
+                        document.body.style.backgroundImage = 'url(background/day/Sunny-Skies.jpg)';
+                        letras.style.color = '#000';
+                        break;
+                    case 'Clouds':
+                        iconoClima.src='animated/cloudy.svg';
+                        document.body.style.backgroundImage = 'url(background/day/Cloud-Skies.jpg)';
+                        letras.style.color = '#000';
+                        break;
+                }
+            }
+            iconos();
+        }
+
+        //SI ES DE NOCHE...
+        else if(horaApi >= anochecerApi && horaApi <= amanecerApi){
+            //MODIFICACION DE ICONOS Y BACKGROUND
+            const iconos = () => {
+                let iconoClima = document.getElementById('iconoAnimado');
+                let letras = document.querySelector('.fuente');
+                switch (datos.weather[0].main) {
+                    case 'Thunderstorm':
+                        iconoClima.src='animated/thunder.svg';
+                        document.body.style.backgroundImage = 'url(background/night/Night-Storm.jpg)';
+                        letras.style.color = '#fff';
+                        break;
+                    case 'Drizzle':
+                        iconoClima.src='animated/rainy-4.svg';
+                        document.body.style.backgroundImage = 'url(background/night/Night-Drizzle.jpg)';
+                        letras.style.color = '#fff';
+                        break;
+                    case 'Rain':
+                        iconoClima.src='animated/rainy-6.svg';
+                        document.body.style.backgroundImage = 'url(background/night/Night-Rain.jpg)';
+                        letras.style.color = '#fff';
+                        break;
+                    case 'Snow':
+                        iconoClima.src='animated/snowy-6.svg';
+                        document.body.style.backgroundImage = 'url(background/night/Night-Snow.png)';
+                        letras.style.color = '#fff';
+                        break;
+                    case 'Clear':
+                        iconoClima.src='animated/night.svg';
+                        document.body.style.backgroundImage = 'url(background/night/Night-Skies.jpg)';
+                        letras.style.color = '#fff';
+                        break;
+                    case 'Clouds':
+                        iconoClima.src='animated/cloudy-night-3.svg';
+                        document.body.style.backgroundImage = 'url(background/night/Night-Cloud.jpg)';
+                        letras.style.color = '#fff';
+                        break;
+                }
+            }
+            iconos();
+        } 
+        //SI HAY UN ERROR
+        else {
+            console.log('Fallo al calcular hora');
         }
     }
     //LLAMADA DE FUNCIONES
-    iconos();
+    horaDelDia();
     animacionCarga();
 }
 
