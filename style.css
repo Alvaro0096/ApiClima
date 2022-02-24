@@ -9,6 +9,7 @@
 
 div{
     font-size: 1.2em;
+    color: #ffffff;
 }
 
 p{
@@ -22,12 +23,13 @@ body{
     align-items: center;
     background-size: cover;
     background-repeat: no-repeat;
+    opacity: .8;
 }
 
 .container{
     display: none;
     margin: 2em;
-    background-color: transparent;
+    background-color: #191919;
     border: .2em solid #191919;
     border-radius: 2em;
 }

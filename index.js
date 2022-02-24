@@ -45,37 +45,30 @@ const datosDeClima = datos => {
             //MODIFICACION DE ICONOS Y BACKGROUND
             const iconos = () => {
                 let iconoClima = document.getElementById('iconoAnimado');
-                let letras = document.querySelector('.fuente');
                 switch (datos.weather[0].main) {
                     case 'Thunderstorm':
                         iconoClima.src='animated/thunder.svg';
                         document.body.style.backgroundImage = 'url(background/day/Storm-Skies.jpg)';
-                        letras.style.color = '#000';
                         break;
                     case 'Drizzle':
                         iconoClima.src='animated/rainy-4.svg';
                         document.body.style.backgroundImage = 'url(background/day/Drizzle-Skies.jpg)';
-                        letras.style.color = '#000';
                         break;
                     case 'Rain':
                         iconoClima.src='animated/rainy-7.svg';
                         document.body.style.backgroundImage = 'url(background/day/Rain-Skies.jpg)';
-                        letras.style.color = '#fff';
                         break;
                     case 'Snow':
                         iconoClima.src='animated/snowy-6.svg';
                         document.body.style.backgroundImage = 'url(background/day/Snow-Skies.jpg)';
-                        letras.style.color = '#000';
                         break;
                     case 'Clear':
                         iconoClima.src='animated/day.svg';
                         document.body.style.backgroundImage = 'url(background/day/Sunny-Skies.jpg)';
-                        letras.style.color = '#000';
                         break;
                     case 'Clouds':
                         iconoClima.src='animated/cloudy.svg';
                         document.body.style.backgroundImage = 'url(background/day/Cloud-Skies.jpg)';
-                        letras.style.color = '#000';
                         break;
                 }
             }
@@ -87,37 +80,30 @@ const datosDeClima = datos => {
             //MODIFICACION DE ICONOS Y BACKGROUND
             const iconos = () => {
                 let iconoClima = document.getElementById('iconoAnimado');
-                let letras = document.querySelector('.fuente');
                 switch (datos.weather[0].main) {
                     case 'Thunderstorm':
                         iconoClima.src='animated/thunder.svg';
                         document.body.style.backgroundImage = 'url(background/night/Night-Storm.jpg)';
-                        letras.style.color = '#fff';
                         break;
                     case 'Drizzle':
                         iconoClima.src='animated/rainy-4.svg';
                         document.body.style.backgroundImage = 'url(background/night/Night-Drizzle.jpg)';
-                        letras.style.color = '#fff';
                         break;
                     case 'Rain':
                         iconoClima.src='animated/rainy-6.svg';
                         document.body.style.backgroundImage = 'url(background/night/Night-Rain.jpg)';
-                        letras.style.color = '#fff';
                         break;
                     case 'Snow':
                         iconoClima.src='animated/snowy-6.svg';
                         document.body.style.backgroundImage = 'url(background/night/Night-Snow.png)';
-                        letras.style.color = '#fff';
                         break;
                     case 'Clear':
                         iconoClima.src='animated/night.svg';
                         document.body.style.backgroundImage = 'url(background/night/Night-Skies.jpg)';
-                        letras.style.color = '#000';
                         break;
                     case 'Clouds':
                         iconoClima.src='animated/cloudy-night-3.svg';
                         document.body.style.backgroundImage = 'url(background/night/Night-Cloud.jpg)';
-                        letras.style.color = '#fff';
                         break;
                 }
             }
