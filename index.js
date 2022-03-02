@@ -1,10 +1,10 @@
 //KEY PERSONAL
-const myApiKey = '85812df68546b272fcaa70610402a638';
+import keyPersonal from '/keyAPI.js';
 
 //FETCH DE API
 const ubicacion = posicion => {
     const {latitude, longitude} = posicion.coords;
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&lang=es&appid=${myApiKey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&lang=es&appid=${keyPersonal}`)
         .then(response => response.json())
         .then(datos => datosDeClima(datos))
         .catch(error => console.log(error))
@@ -130,6 +130,7 @@ const fechaActual = () => {
 const carga = () => {
     navigator.geolocation.getCurrentPosition(ubicacion);
 }
+window.onload = carga();
 
 //TERMINAR ANIMACION CUANDO FINALIZE LA CARGA DE DATOS
 const animacionCarga = () => {
@@ -139,3 +140,4 @@ const animacionCarga = () => {
     loader.style.display = 'none';
     contenedor.style.display = 'grid';
 }
+
