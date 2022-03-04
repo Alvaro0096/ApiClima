@@ -1,6 +1,3 @@
-//KEY PERSONAL
-import keyPersonal from '/keyAPI.js';
-
 //FETCH DE API
 const ubicacion = posicion => {
     const {latitude, longitude} = posicion.coords;
@@ -130,7 +127,6 @@ const fechaActual = () => {
 const carga = () => {
     navigator.geolocation.getCurrentPosition(ubicacion);
 }
-window.onload = carga();
 
 //TERMINAR ANIMACION CUANDO FINALIZE LA CARGA DE DATOS
 const animacionCarga = () => {
@@ -141,3 +137,4 @@ const animacionCarga = () => {
     contenedor.style.display = 'grid';
 }
 
+const keyPersonal = '85812df68546b272fcaa70610402a638';
